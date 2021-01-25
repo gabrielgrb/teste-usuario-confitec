@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 mt-4">
+      <h1 class="text-center">Lista de Usuários</h1>
+      <table class="table table-bordered table-striped table-hover">
+        <thead>
+          <tr>
+            <th class="text-center">ID</th>
+            <th class="text-center">Nome Completo</th>
+            <th class="text-center">E-mail</th>
+            <th class="text-center">Data de Nascimento</th>
+            <th class="text-center">Escolaridade</th>
+            <th class="text-center">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of usuarioService.usuarios">
+            <td>{{ user.id }}</td>
+            <td>{{ user.nomeCompleto }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.dataNascimentoFormatada }}</td>
+            <td>{{ user.escolaridadeDescricao }}</td>
+
+            <td>
+              <button type="button" class="btn btn-info btn-sm mr-2" (click)="showEditUserForm(user)">Editar</button>
+
+              <button type="button" class="btn btn-danger btn-sm" (click)="removeUser(user)">Apagar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <button class="btn btn-success" (click)="showAddUserForm()">Novo Usuário</button>
+
+      <div class="mt-4">
+        <form *ngIf="userForm">
+          <h2>Adicionar Usuário</h2>
+          <p>Nome: <input type="text" name="nome" [(ngModel)]="newUser.nome" /></p>
+          <p>Sobrenome: <input type="text" name="sobrenome" [(ngModel)]="newUser.sobrenome" /></p>
+          <p>E-mail: <input type="text" name="email" [(ngModel)]="newUser.email" /></p>
+          <p>Data de Nascimento: <input type="text" name="dataNascimento" [(ngModel)]="newUser.dataNascimento" /></p>
+          <p>Escolaridade: <input type="text" name="escolaridade" [(ngModel)]="newUser.escolaridade" /></p>
+          <p>
+            <button type="button" class="btn btn-primary mr-2" (click)="salvarUsuario(newUser)">Salvar</button>
+            <button type="button" class="btn btn-warning" (click)="cancelar()">Cancelar</button>
+          </p>
+        </form>
+
+        <form *ngIf="editUserForm">
+          <h2>Edição de Usuário</h2>
+          <p>Nome: <input type="text" name="nome" [(ngModel)]="editedUser.nome" /></p>
+          <p>Sobrenome: <input type="text" name="sobrenome" [(ngModel)]="editedUser.sobrenome" /></p>
+          <p>E-mail: <input type="text" name="email" [(ngModel)]="editedUser.email" /></p>
+          <p>Data de Nascimento: <input type="text" name="dataNascimento" [(ngModel)]="editedUser.dataNascimentoFormatada" /></p>
+          <p>Escolaridade: <input type="text" name="escolaridade" [(ngModel)]="editedUser.escolaridadeDescricao" /></p>
+          <p>
+            <button type="button" class="btn btn-primary mr-2" (click)="atualizarUsuario()">Salvar</button>
+            <button type="button" class="btn btn-warning" (click)="cancelarEdicao()">Cancelar</button>
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
