@@ -1,0 +1,58 @@
+<div class="col-md-8 offset-md-2">
+    <span class="anchor" id="formUserEdit"></span>
+    <hr class="my-5">
+
+    <!-- form user info -->
+    <div class="card card-outline-secondary">
+        <div class="card-header">
+            <h3 class="mb-0">Cadastrar Usuário</h3>
+        </div>
+        <div class="card-body">
+            <form [formGroup]="form" (ngSubmit)="submit()">
+                <div class="form-group row">
+                    <label class="col-lg-3 col-form-label form-control-label"><strong>Nome</strong></label>
+                    <div class="col-lg-9">
+                        <input formControlName="nome" class="form-control" type="text" placeholder="Zakk">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-lg-3 col-form-label form-control-label"><strong>Sobrenome</strong></label>
+                    <div class="col-lg-9">
+                        <input formControlName="sobrenome" class="form-control" type="text" placeholder="Wylde">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-lg-3 col-form-label form-control-label"><strong>E-mail</strong></label>
+                    <div class="col-lg-9">
+                        <input formControlName="email" class="form-control" type="email" placeholder="email@gmail.com">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-lg-3 col-form-label form-control-label"><strong>Data de Nascimento</strong></label>
+                    <div class="col-lg-9">
+                        <input formControlName="dataNascimento" class="form-control" type="date" placeholder="28/12/1995">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-lg-3 col-form-label form-control-label"><strong>Escolaridade</strong></label>
+                    <div class="col-lg-9">
+                        <select formControlName="escolaridade" id="escolaridade_id" class="form-control" size="0">
+                            <option value="">Selecione a escolaridade</option>
+                            <option value="1">Infantil</option>
+                            <option value="2">Fundamental</option>
+                            <option value="3">Médio</option>
+                            <option value="4">Superior</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-lg-3 col-form-label form-control-label"></label>
+                    <div class="col-lg-9">
+                        <input (click)="voltar()" type="reset" class="btn btn-secondary" value="Voltar">
+                        <input (click)="salvar()" type="button" class="btn btn-success" value="Salvar">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

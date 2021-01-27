@@ -1,7 +1,6 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { User } from '../models/user';
 
 const baseUrl = 'https://localhost:5028/api/usuarios';
 
@@ -11,7 +10,7 @@ const baseUrl = 'https://localhost:5028/api/usuarios';
 
 export class UsuarioService {
 
-  public usuarios: User[] = [];
+  public usuarios: [] = [];
 
   constructor(private http: HttpClient) { }
 
@@ -33,13 +32,5 @@ export class UsuarioService {
 
   delete(id): Observable<any> {
     return this.http.delete(`${baseUrl}/${id}`);
-  }
-
-  deleteAll(): Observable<any> {
-    return this.http.delete(baseUrl);
-  }
-
-  findByTitle(title): Observable<any> {
-    return this.http.get(`${baseUrl}?title=${title}`);
   }
 }
